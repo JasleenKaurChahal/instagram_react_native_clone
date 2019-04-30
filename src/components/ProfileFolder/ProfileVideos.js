@@ -1,0 +1,34 @@
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
+import { VIDEO_IMAGE } from "../../constants/index";
+
+export default class ProfileVideos extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.image} source={VIDEO_IMAGE} />
+        <Text style={styles.textStyle}>Photos and Videos Of You</Text>
+        <Text style={styles.textStyle1}>
+          {"\n"}When people tag you in photos or videos, they'll appear here
+        </Text>
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    top: 100
+  },
+  textStyle: {
+    fontSize: 20
+  },
+  textStyle1: {
+    width: "70%",
+    textAlign: "center"
+  },
+  image: { width: 70, height: 70 }
+});
