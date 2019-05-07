@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { VIDEO_IMAGE } from "../../constants/index";
-
-export default class ProfileVideos extends React.Component {
+import { any } from "prop-types";
+export default class ProfileVideos extends React.Component<any, any> {
   render() {
     return (
       <View style={styles.container}>

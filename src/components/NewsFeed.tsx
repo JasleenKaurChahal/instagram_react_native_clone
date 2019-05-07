@@ -1,26 +1,61 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import * as React from "react";
 import {
-  SimpleLineIcons,
-  Feather,
-  Entypo,
-  EvilIcons,
-  FontAwesome,
-  Ionicons
-} from "@expo/vector-icons";
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  TouchableWithoutFeedback
+} from "react-native";
+import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
 //import { FEED_DATA } from "../Store/Store";
 import { STORY_PIC } from "../constants/index";
 import { BOOKMARK_ICON } from "../constants/index";
 import { observer } from "mobx-react";
 @observer
-export default class NewsFeed extends React.Component {
+export default class NewsFeed extends React.Component<
+  { store: any; navigation: any },
+  any
+> {
+  state = {
+    lastImagePress: 0
+  };
+  // onButtonPress = (item: any) => {
+  //   item.isLikeButtonClicked = !item.isLikeButtonClicked;
+  //   !item.isLikeButtonClicked
+  //     ? (item.likes = item.likes + 1)
+  //     : (item.likes = item.likes - 1);
+  // };
+  // constructor() {
+  //   super();
+
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+  handleImageDoublePress = (item: any, index: number) => {
+    this.props.navigation.navigate("PostPage", { item });
+  };
+  //to check if there is a double tap on image
+  handleClick = (item: any, index: number) => {
+    const now = new Date().getTime();
+    if (this.state.lastImagePress && now - this.state.lastImagePress < 300) {
+      //300 is DOUBLE_PRESS_DELAY
+      delete this.state.lastImagePress;
+      this.handleImageDoublePress(item, index);
+    } else {
+      this.state.lastImagePress = now;
+    }
+  };
   render() {
+    console.log(
+      "Navigation options on NewsFeed are " +
+        JSON.stringify(this.props.navigation)
+    );
     return (
       <ScrollView directionalLockEnabled={true} style={styles.scrollBar}>
-        {this.props.store.FEED_DATA.map((item, index) => {
+        {this.props.store.FEED_DATA.map((item: any, index: number) => {
           //console.log(typeof item, item, item.link);
           return (
-            <View key={index} style={styles.description}>
+            <View key={index}>
               <View style={styles.tabBarInfoContainer2}>
                 <Image source={STORY_PIC} style={styles.detailContainer} />
                 <Text style={styles.detailProfile}>{item.name}</Text>
@@ -29,13 +64,32 @@ export default class NewsFeed extends React.Component {
                   style={styles.dotsSymbol}
                 />
               </View>
-              <Image style={styles.feedContainer} source={{ uri: item.link }} />
-              <View style={styles.tabBarInfoContainer3}>
-                <Ionicons
-                  name="md-heart-empty"
-                  style={styles.likeSymbol}
-                  size={30}
+              <TouchableWithoutFeedback
+                onPress={() => this.handleClick(item, index)}
+              >
+                <Image
+                  style={styles.feedContainer}
+                  source={{ uri: item.link }}
                 />
+              </TouchableWithoutFeedback>
+              <View style={styles.tabBarInfoContainer3}>
+                {!item.isLikeButtonClicked ? (
+                  <Ionicons
+                    name="ios-heart"
+                    style={styles.likeSymbolPressed}
+                    size={30}
+                    onPress={() => this.props.store.onButtonPress(item)}
+                    //onPress={() => this.onButtonPress(item)}
+                  />
+                ) : (
+                  <Ionicons
+                    name="md-heart-empty"
+                    style={styles.likeSymbol}
+                    size={30}
+                    onPress={() => this.props.store.onButtonPress(item)}
+                    //onPress={() => this.onButtonPress(item)}
+                  />
+                )}
                 <FontAwesome
                   name="comment-o"
                   style={styles.commentSymbol}
@@ -50,7 +104,7 @@ export default class NewsFeed extends React.Component {
               </View>
               <View style={styles.tabBarInfoContainer4}>
                 <Text style={styles.postDescription}>
-                  <Text style={styles.makeBold}>{item.likes}</Text>
+                  <Text style={styles.makeBold}>{item.likes} likes</Text>
                   {"\n"}
                   <Text style={styles.makeBold}>{item.name} </Text>
                   <Text>{item.quotes}</Text>
@@ -150,7 +204,6 @@ const styles = StyleSheet.create({
   },
   scrollBar: {
     flex: 1,
-
     left: 0,
     right: 0
   },
@@ -162,7 +215,6 @@ const styles = StyleSheet.create({
     height: 30,
     marginBottom: 30,
     padding: 5,
-    position: "absolute",
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fbfbfb"
@@ -201,8 +253,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingVertical: 10,
     margin: 1,
-    justifyContent: "space-between",
-    alignItems: "center"
+    justifyContent: "space-between"
   },
   savedContainer: {
     height: 40,
@@ -214,7 +265,15 @@ const styles = StyleSheet.create({
   makeBold: { fontWeight: "bold" },
   makeTextLighter: { fontWeight: "100" },
   paperPlane: { top: 1 },
-  likeSymbol: { paddingRight: 10, top: 2 },
+  likeSymbol: {
+    paddingRight: 10,
+    top: 2
+  },
+  likeSymbolPressed: {
+    color: "red",
+    paddingRight: 10,
+    top: 2
+  },
   commentSymbol: { paddingRight: 10 },
   postDescription: { paddingRight: 10, paddingLeft: 10 }
 });

@@ -1,45 +1,33 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Dimensions,
-  Button,
-  Alert,
-  TouchableOpacity
-} from "react-native";
-import {
-  MaterialIcons,
-  SimpleLineIcons,
-  Feather,
-  Entypo,
-  EvilIcons,
-  FontAwesome,
-  Ionicons
-} from "@expo/vector-icons";
+import * as React from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { SearchBar } from "react-native";
+export default class SearchHeader extends React.Component<any, any> {
+  state = {
+    search: ""
+  };
 
-export default class Header extends React.Component {
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
   //submit = () => {};
-  constructor(props) {
-    super(props);
-    this.handleBack = this.handleBack.bind(this);
-  }
-  handleBack() {
-    console.log(this.props.navigation, "navigation");
-    this.props.navigation.goBack();
-  }
+  // constructor(props: any) {
+  //   super(props);
+  //   this.handleBack = this.handleBack.bind(this);
+  // }
+  // handleBack() {
+  //   console.log(this.props.navigation, "navigation");
+  //   this.props.navigation.goBack();
+  // }
   render() {
+    const { search } = this.state;
     return (
       <View style={styles.tabBarInfoContainer}>
-        <TouchableOpacity onPress={this.handleBack}>
-          <MaterialIcons
-            name="keyboard-arrow-left"
-            size={25}
-            style={styles.cameraSymbol}
-          />
-        </TouchableOpacity>
+        <SearchBar
+          placeholder="Type Here..."
+          onChangeText={this.updateSearch}
+          value={search}
+        />
 
         <Text style={styles.textStyle}>Settings</Text>
       </View>

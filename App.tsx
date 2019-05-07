@@ -1,7 +1,6 @@
-import React from "react";
 import { createAppContainer, createStackNavigator } from "react-navigation";
-import { TabNavigator } from "./src/Navigation/TabNavigator";
 import { Drawer } from "./src/Navigation/DrawerNavigator";
+
 const stackNavigator = createStackNavigator(
   {
     Drawer: { screen: Drawer }
@@ -10,9 +9,11 @@ const stackNavigator = createStackNavigator(
     headerMode: "none"
   },
   {
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions: () => ({
+      headerMode: "screen",
       title: "ReactNavigation" // Title to appear in status bar
     })
   }
 );
+
 export default createAppContainer(stackNavigator);

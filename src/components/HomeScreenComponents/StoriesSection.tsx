@@ -1,25 +1,14 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Dimensions
-} from "react-native";
-import {
-  SimpleLineIcons,
-  Feather,
-  Entypo,
-  EvilIcons,
-  FontAwesome,
-  Ionicons
-} from "@expo/vector-icons";
+import * as React from "react";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { STORY_PIC } from "../../constants/index";
 
 import { observer } from "mobx-react";
+import { any } from "prop-types";
 @observer
-export default class StoriesSection extends React.Component {
+export default class StoriesSection extends React.Component<
+  { store: any },
+  any
+> {
   // constructor() {
   //   super();
   //   this.state = {
@@ -42,7 +31,7 @@ export default class StoriesSection extends React.Component {
       <View style={styles.storySection}>
         <View style={styles.bodySection}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {this.props.store.STORY_POSTED_BY.map((story, i) => {
+            {this.props.store.STORY_POSTED_BY.map((story: any, i: number) => {
               return (
                 <View key={i}>
                   <Image source={STORY_PIC} style={styles.storyContainer} />

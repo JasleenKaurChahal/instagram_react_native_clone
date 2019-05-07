@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   StyleSheet,
   Text,
@@ -18,12 +18,13 @@ import {
 } from "@expo/vector-icons";
 //import { OPTIONS } from "../Store/Store";
 import { observer, Observer } from "mobx-react";
+
 @observer
-export default class Header extends React.Component {
+export default class Header extends React.Component<{ store: any }, any> {
   render() {
     return (
       <View style={styles.tabBarInfoContainer}>
-        {this.props.store.OPTIONS.map((option, index) => {
+        {this.props.store.OPTIONS.map((option: any, index: number) => {
           // console.log(option.iconName);
           return (
             <View style={styles.container} key={index}>

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { NavigationActions } from "react-navigation";
-import PropTypes from "prop-types";
+import PropTypes, { any } from "prop-types";
 
 import {
   ScrollView,
@@ -20,10 +20,10 @@ import {
 } from "@expo/vector-icons";
 // import { DRAWER_OPTIONS } from "../Store/Store";
 import EditPage from "./Edit/EditPage";
-import { observer, Observer } from "mobx-react";
+import { observer } from "mobx-react";
 @observer
-export default class DrawerScreen extends Component {
-  navigateToScreen = (route) => () => {
+export default class DrawerScreen extends React.Component<any, any> {
+  navigateToScreen = (route: any) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route
     });
@@ -39,7 +39,7 @@ export default class DrawerScreen extends Component {
     return (
       <View>
         <ScrollView>
-          {this.props.store.DRAWER_OPTIONS.map((option, index) => {
+          {this.props.store.DRAWER_OPTIONS.map((option: any, index: number) => {
             // console.log(option.iconName);
             return (
               <View style={styles.container} key={index}>
@@ -146,6 +146,6 @@ const styles = StyleSheet.create({
   }
 });
 
-DrawerScreen.propTypes = {
-  navigation: PropTypes.object
-};
+// DrawerScreen.propTypes = {
+//   navigation: PropTypes.object
+// };

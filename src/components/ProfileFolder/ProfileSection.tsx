@@ -1,24 +1,6 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Dimensions,
-  Button,
-  Alert
-} from "react-native";
-import {
-  SimpleLineIcons,
-  Feather,
-  Entypo,
-  EvilIcons,
-  FontAwesome,
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons
-} from "@expo/vector-icons";
+import * as React from "react";
+import { StyleSheet, Text, View, Image, Button, Alert } from "react-native";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import {
   createMaterialTopTabNavigator,
   createAppContainer,
@@ -26,9 +8,7 @@ import {
   createStackNavigator
 } from "react-navigation";
 import NewsFeed from "../NewsFeed";
-import ProfileGrid from "./ProfileGrid";
 import Home from "../../screens/Home/index";
-import Search from "../../screens/Search/index";
 import Add from "../../screens/Add/index";
 import { STORY_PIC } from "../../constants/index";
 const Tabs = createMaterialTopTabNavigator(
@@ -47,7 +27,7 @@ const Tabs = createMaterialTopTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
-        let IconComponent;
+        let IconComponent: any;
         let iconName;
         let iconSize;
 
@@ -206,7 +186,7 @@ const styles = StyleSheet.create({
   profileDescription: {
     //borderWidth: 0.5,
     //borderColor: "green",
-    textAlign: "center"
+    //textAlign: "center"
   },
   textDescription: {
     fontWeight: "100",

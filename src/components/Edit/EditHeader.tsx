@@ -1,29 +1,29 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Dimensions
-} from "react-native";
-import {
-  SimpleLineIcons,
-  Feather,
-  Entypo,
-  EvilIcons,
-  FontAwesome,
-  Ionicons
-} from "@expo/vector-icons";
-import { INSTAGRAM_LOGO_PIC } from "../../constants/index";
-export default class Header extends React.Component {
+import * as React from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+
+export default class Header extends React.Component<{ navigation: any }, any> {
+  //submit = () => {};
+  constructor(props: any) {
+    super(props);
+    this.handleBack = this.handleBack.bind(this);
+  }
+  handleBack() {
+    console.log(this.props.navigation, "navigation");
+    this.props.navigation.goBack();
+  }
   render() {
     return (
       <View style={styles.tabBarInfoContainer}>
-        <SimpleLineIcons name="camera" size={25} style={styles.cameraSymbol} />
-        <Image source={INSTAGRAM_LOGO_PIC} style={styles.imageContainer} />
-        <Feather name="tv" size={25} style={styles.tvSymbol} />
-        <Entypo name="paper-plane" size={25} style={styles.messageSymbol} />
+        <TouchableOpacity onPress={this.handleBack}>
+          <MaterialIcons
+            name="keyboard-arrow-left"
+            size={25}
+            style={styles.cameraSymbol}
+          />
+        </TouchableOpacity>
+
+        <Text style={styles.textStyle}>Settings</Text>
       </View>
     );
   }
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fbfbfb",
     paddingVertical: 40,
     marginBottom: 0,
-    paddingBottom: 0
+    paddingBottom: 5
   },
   cameraSymbol: {
     paddingRight: 80
@@ -68,5 +68,10 @@ const styles = StyleSheet.create({
   messageSymbol: {
     // marginTop: 10,
     paddingLeft: 15
+  },
+  textStyle: {
+    fontWeight: "bold",
+    paddingLeft: 20,
+    fontSize: 15
   }
 });

@@ -1,11 +1,12 @@
-import React from "react";
+import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
-
-export default class Activity extends React.Component {
+import SearchHeader from "../../components/SearchComponents/SearchHeader";
+import { SearchBar } from "react-native-elements";
+export default class Search extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Activity</Text>
+        <SearchHeader />
       </View>
     );
   }

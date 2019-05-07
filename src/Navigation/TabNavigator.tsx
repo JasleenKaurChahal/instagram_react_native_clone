@@ -1,13 +1,10 @@
-import React from "react";
-import EditPage from "../components/Edit/EditPage";
+import * as React from "react";
 import { createBottomTabNavigator } from "react-navigation";
-
 import Home from "../screens/Home/index";
 import Search from "../screens/Search/index";
 import Add from "../screens/Add/index";
 import Activity from "../screens/Activity/index";
 import Profile from "../screens/Profile/index";
-
 import {
   Feather,
   Entypo,
@@ -15,21 +12,27 @@ import {
   Ionicons,
   MaterialCommunityIcons
 } from "@expo/vector-icons";
-import Store from "../Store/Store";
 export const TabNavigator = createBottomTabNavigator(
   {
-    Home: { screen: Home },
+    Home: {
+      screen: ({ screenProps, navigation }: any) => (
+        <Home screenProps={{ rootNavigation: navigation }} />
+      )
+    },
     Search: { screen: Search },
     Add: { screen: Add },
     Activity: { screen: Activity },
-    Profile: { screen: Profile }
+    Profile: {
+      screen: ({ screenProps, navigation }: any) => (
+        <Profile screenProps={{ rootNavigation: navigation }} />
+      )
+    }
   },
-
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
-        let IconComponent;
+        let IconComponent: any;
         let iconName;
         let iconSize;
 

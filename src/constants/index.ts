@@ -12,3 +12,4 @@ export const VIDEO_IMAGE = {
   uri:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxdMJDM7aOuA87qoOoZLBsOF1SE3qa7CxES5WB8U3XRZEdJ7wyaQ"
 };
+//as nothing is rendered so the filename is .ts and not .tsx

@@ -1,12 +1,11 @@
-import React from "react";
+import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
-//import Home from "./src/screens/Home/index";
 
-export default class App extends React.Component {
+export default class Activity extends React.Component<any, any> {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Add</Text>
+        <Text>Activity</Text>
       </View>
     );
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   StyleSheet,
   Text,
@@ -8,19 +8,14 @@ import {
   Dimensions,
   TouchableOpacity
 } from "react-native";
-import {
-  SimpleLineIcons,
-  Feather,
-  Entypo,
-  EvilIcons,
-  FontAwesome,
-  Ionicons,
-  MaterialCommunityIcons,
-  Octicons
-} from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import Drawer from "../../../App";
-export default class ProfileHeader extends React.Component {
-  constructor(props) {
+import { any } from "prop-types";
+export default class ProfileHeader extends React.Component<
+  { navigation: any },
+  any
+> {
+  constructor(props: any) {
     super(props);
     this.handleThreeBar = this.handleThreeBar.bind(this);
   }
@@ -47,17 +42,6 @@ export default class ProfileHeader extends React.Component {
 }
 const styles = StyleSheet.create({
   tabBarInfoContainer: {
-    // flex: 1,
-    // position: "absolute",
-    // top: 0,
-    // bottom: 0,
-    // left: 0,
-    // right: 0,
-    // padding: 0,
-    // backgroundColor: "green",
-    // flexDirection: "row",
-    // justifyContent: "flex-end",
-    // alignItems: "flex-end"
     position: "absolute",
     top: 0,
     left: 0,
@@ -78,11 +62,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 35,
     fontSize: 20
-    // marginTop: 10
   },
-
   profileSymbol: {
-    // marginTop: 10,
     paddingLeft: 95
   }
 });

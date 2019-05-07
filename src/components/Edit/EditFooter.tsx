@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   StyleSheet,
   Text,
@@ -9,7 +9,7 @@ import {
   Linking
 } from "react-native";
 
-export default class Header extends React.Component {
+export default class Header extends React.Component<any, any> {
   render() {
     return (
       <View style={styles.tabBarInfoContainer}>
