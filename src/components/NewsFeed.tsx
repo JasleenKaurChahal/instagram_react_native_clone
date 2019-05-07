@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
 //import { FEED_DATA } from "../Store/Store";
+// FIXME: merge the imports, if they are from same file, and we don't need to mention if it's index file
 import { STORY_PIC } from "../constants/index";
 import { BOOKMARK_ICON } from "../constants/index";
 import { observer } from "mobx-react";
@@ -50,6 +51,7 @@ export default class NewsFeed extends React.Component<
       "Navigation options on NewsFeed are " +
         JSON.stringify(this.props.navigation)
     );
+    // FIXME: try to make components more modular, for example, create separate component for action buttons
     return (
       <ScrollView directionalLockEnabled={true} style={styles.scrollBar}>
         {this.props.store.FEED_DATA.map((item: any, index: number) => {
@@ -109,6 +111,8 @@ export default class NewsFeed extends React.Component<
                   <Text style={styles.makeBold}>{item.name} </Text>
                   <Text>{item.quotes}</Text>
                   <Text style={styles.makeTextLighter}>
+                    // FIXME: try to remove this, add padding or margin in style
+                    if needed
                     {"\n"}
                     {item.comments}
                     {"\n"}
@@ -178,6 +182,7 @@ const styles = StyleSheet.create({
     fontSize: 5,
     backgroundColor: "red"
   },
+  // FIXME: choose more descriptive names instead of number as post fix
   tabBarInfoContainer2: {
     position: "absolute",
     borderTopColor: "#fbfbfb",
@@ -226,6 +231,7 @@ const styles = StyleSheet.create({
   dotsSymbol: {
     paddingLeft: 250
   },
+  // FIXME: choose more descriptive names instead of number as post fix
   tabBarInfoContainer3: {
     position: "relative",
     marginTop: 0,
@@ -239,6 +245,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingVertical: 10
   },
+  // FIXME: choose more descriptive names instead of number as post fix
   tabBarInfoContainer4: {
     fontWeight: "bold",
     position: "relative",
@@ -263,6 +270,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   makeBold: { fontWeight: "bold" },
+  // FIXME: choose more descriptive name
   makeTextLighter: { fontWeight: "100" },
   paperPlane: { top: 1 },
   likeSymbol: {

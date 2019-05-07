@@ -11,6 +11,7 @@ import ProfileGrid from "./ProfileGrid";
 import ProfileVideos from "./ProfileVideos";
 import Store from "../../Store/Store";
 import PostPage from "../postPage/index";
+// FIXME: define proptypes
 export default class ProfileTabSection extends React.Component<any, any> {
   tabs: any = createMaterialTopTabNavigator(
     {
@@ -100,6 +101,7 @@ export default class ProfileTabSection extends React.Component<any, any> {
       headerMode: "none"
     },
     {
+      // FIXME:
       navigationOptions: ({ navigation }) => ({
         title: "ReactNavigation" // Title to appear in status bar
       })
@@ -108,6 +110,7 @@ export default class ProfileTabSection extends React.Component<any, any> {
   //export default createAppContainer(stackNavigator);
   navigatorContainer = createAppContainer(this.stackNavigator);
   render() {
+    // FIXME: remove logs before pushing
     console.log("tab section console " + JSON.stringify(this.props.navigation));
     //console.log("from profile tab " + JSON.stringify(this.props.navigation));
     return (

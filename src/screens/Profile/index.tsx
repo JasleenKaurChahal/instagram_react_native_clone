@@ -4,6 +4,7 @@ import ProfileHeader from "../../components/ProfileFolder/ProfileHeader";
 import ProfileSection from "../../components/ProfileFolder/ProfileSection";
 import ProfileTabSection from "../../components/ProfileFolder/ProfileTabSection";
 import Store from "../../Store/Store";
+// FIXME: add proptypes
 export default class Profile extends React.Component<any, any> {
   render() {
     console.log(

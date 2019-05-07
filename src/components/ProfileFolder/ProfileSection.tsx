@@ -70,6 +70,7 @@ const Tabs = createMaterialTopTabNavigator(
 );
 const App = createAppContainer(Tabs);
 export default class ProfileSection extends React.Component {
+  // FIXME: use arrow function or bind this
   _onPress() {
     Alert.alert("on Press!");
   }
@@ -83,6 +84,7 @@ export default class ProfileSection extends React.Component {
           <View style={styles.detailSection}>
             <View style={styles.bodyDetailSection}>
               <View style={styles.profileDescription}>
+                // FIXME: remove hard coded values
                 <Text style={styles.numberDescription}>10</Text>
                 <Text style={styles.textDescription}>posts</Text>
               </View>

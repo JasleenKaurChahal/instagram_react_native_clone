@@ -23,6 +23,7 @@ import EditPage from "./Edit/EditPage";
 import { observer } from "mobx-react";
 @observer
 export default class DrawerScreen extends React.Component<any, any> {
+  // FIXME: define types for components
   navigateToScreen = (route: any) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route

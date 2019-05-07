@@ -5,6 +5,7 @@ import StoriesSection from "../../components/HomeScreenComponents/StoriesSection
 import NewsFeed from "../../components/NewsFeed";
 import Store from "../../Store/Store";
 import { observable } from "mobx";
+// FIXME: add proptypes
 export default class Home extends React.Component<any, any> {
   render() {
     // console.log(

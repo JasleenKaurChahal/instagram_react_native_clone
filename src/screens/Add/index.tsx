@@ -2,6 +2,7 @@ import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PostPage from "../../components/postPage/index";
 
+// FIXME: add proptypes if needed
 export default class Add extends React.Component<any, any> {
   render() {
     return (

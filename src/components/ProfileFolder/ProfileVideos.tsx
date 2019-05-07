@@ -2,6 +2,8 @@ import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { VIDEO_IMAGE } from "../../constants/index";
 import { any } from "prop-types";
+
+// FIXME: add proptypes
 export default class ProfileVideos extends React.Component<any, any> {
   render() {
     return (
@@ -9,6 +11,7 @@ export default class ProfileVideos extends React.Component<any, any> {
         <Image style={styles.image} source={VIDEO_IMAGE} />
         <Text style={styles.textStyle}>Photos and Videos Of You</Text>
         <Text style={styles.textStyle1}>
+          // FIXME: use padding or margin and remove next line character
           {"\n"}When people tag you in photos or videos, they'll appear here
         </Text>
       </View>

@@ -9,6 +9,7 @@ const stackNavigator = createStackNavigator(
     headerMode: "none"
   },
   {
+    // FIXME:
     navigationOptions: () => ({
       headerMode: "screen",
       title: "ReactNavigation" // Title to appear in status bar

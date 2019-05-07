@@ -16,7 +16,7 @@ import {
   Ionicons
 } from "@expo/vector-icons";
 const win = Dimensions.get("window");
-
+// FIXME: remove unnecessary files
 export default class Home extends React.Component {
   render() {
     let pic = {
@@ -675,7 +675,7 @@ export default class NewsFeed extends React.Component {
                 <Text>
                   {"  "}
                   Appreciate what you have before it turns into what you had!
-                </Text> 
+                </Text>
                 <Text style={{ fontWeight: "100" }}>
                   {"\n"}
                   View all 20 comments

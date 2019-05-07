@@ -1,13 +1,15 @@
 import * as React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+// FIXME:
 import { SearchBar } from "react-native";
+// FIXME: add proptype
 export default class SearchHeader extends React.Component<any, any> {
   state = {
     search: ""
   };
-
-  updateSearch = (search) => {
+  // FIXME: add type for functions
+  updateSearch = search => {
     this.setState({ search });
   };
   //submit = () => {};
@@ -20,7 +22,8 @@ export default class SearchHeader extends React.Component<any, any> {
   //   this.props.navigation.goBack();
   // }
   render() {
-    const { search } = this.state;
+    // FIXME:
+    const { search } = "this".state;
     return (
       <View style={styles.tabBarInfoContainer}>
         <SearchBar

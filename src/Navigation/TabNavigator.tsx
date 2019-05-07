@@ -35,7 +35,7 @@ export const TabNavigator = createBottomTabNavigator(
         let IconComponent: any;
         let iconName;
         let iconSize;
-
+        // FIXME: can use switch case in this situation
         if (routeName === "Home") {
           IconComponent = MaterialCommunityIcons;
           iconName = `home${focused ? "" : "-outline"}`;
@@ -72,6 +72,7 @@ export const TabNavigator = createBottomTabNavigator(
       activeTintColor: "black",
       inactiveTintColor: "black"
     },
+    // FIXME:
     barStyle: {
       justifyContent: "flex-end"
     }

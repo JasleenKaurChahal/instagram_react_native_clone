@@ -57,6 +57,7 @@ export default class Post extends React.Component<any, any> {
               <Text style={styles.makeBold}>{this.props.item.name}</Text>
               <Text> {this.props.item.quotes}</Text>
               <Text style={styles.makeTextLighter}>
+                // FIXME: use padding or margin or flex if needed
                 {"\n"}
                 {this.props.item.comments}
                 {"\n"}

@@ -2,6 +2,7 @@ import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import SearchHeader from "../../components/SearchComponents/SearchHeader";
 import { SearchBar } from "react-native-elements";
+// FIXME: add proptypes if needed
 export default class Search extends React.Component {
   render() {
     return (
